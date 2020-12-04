@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main.xml"
+    app:startDestination="@id/repositoriesListFragment">
+
+    <fragment
+        android:id="@+id/repositoriesListFragment"
+        android:name="com.example.codeaddict_app.ui.fragments.RepositoriesListFragment"
+        android:label="RepositoriesListFragment">
+        <action
+            android:id="@+id/action_repositoriesListFragment_to_repositoryInfoFragment"
+            app:destination="@id/repositoryInfoFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/repositoryInfoFragment"
+        android:name="com.example.codeaddict_app.ui.fragments.RepositoryInfoFragment"
+        android:label="RepositoryInfoFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+</navigation>
