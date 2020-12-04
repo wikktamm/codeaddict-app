@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.codeaddict_app.R
-import com.example.codeaddict_app.data.models.Repository
+import com.example.codeaddict_app.data.models.api.Repository
 
 class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>() {
     inner class RepositoryViewHolder(view: View) : RecyclerView.ViewHolder(view)
