@@ -2,4 +2,5 @@
 <resources>
     <dimen name="main_margin">16dp</dimen>
     <dimen name="margin_extra">4dp</dimen>
+    <dimen name="margin_titles">20dp</dimen>
 </resources>

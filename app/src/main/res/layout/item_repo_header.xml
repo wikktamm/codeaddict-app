@@ -37,11 +37,14 @@
 
     <TextView
         android:id="@+id/textView4"
+        android:alpha="0.5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="@dimen/margin_titles"
         android:text="repo by"
+        android:textSize="15sp"
         android:textAllCaps="true"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -51,6 +54,7 @@
         android:layout_height="wrap_content"
         android:text="repo author name"
         android:theme="@style/Headline"
+        android:textSize="28sp"
         android:textColor="@android:color/white"
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="@+id/textView4"
@@ -58,11 +62,14 @@
 
     <TextView
         android:id="@+id/textView8"
+        android:alpha="0.5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_star_filled"
         android:gravity="center"
         android:text="number of stars (11)"
+        android:textSize="13sp"
+        android:textColor="@android:color/white"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
