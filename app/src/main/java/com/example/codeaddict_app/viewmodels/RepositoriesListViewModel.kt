@@ -3,16 +3,14 @@ package com.example.codeaddict_app.viewmodels
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.codeaddict_app.data.models.api.RepositoriesResponse
 import com.example.codeaddict_app.data.repositories.interfaces.RepositoriesRepository
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class RepositoriesListViewModel @ViewModelInject constructor(private val repo: RepositoriesRepository) :
-    ViewModel() {
+    BaseViewModel() {
 
     private val _repos = MutableLiveData<RepositoriesResponse>()
     val repos: LiveData<RepositoriesResponse>
@@ -20,11 +18,12 @@ class RepositoriesListViewModel @ViewModelInject constructor(private val repo: R
 
     fun getRepositories(query: String) {
         viewModelScope.launch {
+            _isLoading.postValue(true)
             repo.getRepositories(query)
                 .collect { result ->
                     _repos.postValue(result)
-                    Timber.d("123" + result.toString())
                 }
+            _isLoading.postValue(false)
         }
     }
 }

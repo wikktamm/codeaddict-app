@@ -24,7 +24,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="12dp"
-        android:gravity="center"
+        android:foregroundGravity="center"
         android:theme="@style/InputText"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"

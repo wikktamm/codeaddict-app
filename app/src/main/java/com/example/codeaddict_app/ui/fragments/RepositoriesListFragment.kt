@@ -21,7 +21,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class RepositoriesListFragment : Fragment(R.layout.fragment_repositories_list) {
+class RepositoriesListFragment : BaseFragment(R.layout.fragment_repositories_list) {
 
     private val viewModel: RepositoriesListViewModel by viewModels()
     private lateinit var repositoriesAdapter: RepositoryAdapter
@@ -44,7 +44,9 @@ class RepositoriesListFragment : Fragment(R.layout.fragment_repositories_list) {
             job = MainScope().launch {
                 delay(DELAY_TIME_AFTER_EACH_INPUT_LETTER)
                 it?.let {
-                    viewModel.getRepositories(it.trim().toString())
+                    if (it.trim().isNotEmpty()) {
+                        viewModel.getRepositories(it.trim().toString())
+                    }
                 }
             }
         }
@@ -54,6 +56,9 @@ class RepositoriesListFragment : Fragment(R.layout.fragment_repositories_list) {
         with(viewModel) {
             repos.observe(viewLifecycleOwner, Observer { response ->
                 repositoriesAdapter.differ.submitList(response.repositories)
+            })
+            isLoading.observe(viewLifecycleOwner, Observer { isLoading->
+                manageProgressBar(isLoading)
             })
         }
     }
