@@ -3,4 +3,6 @@
     <string name="repositories">Repositories</string>
     <string name="search">Search</string>
     <string name="number_of_stars">Number of stars (%1$d)</string>
+    <string name="no_commits">No commits yet</string>
+    <string name="no_repos">No matching repos</string>
 </resources>

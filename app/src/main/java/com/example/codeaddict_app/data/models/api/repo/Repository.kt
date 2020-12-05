@@ -1,4 +1,5 @@
 package com.example.codeaddict_app.data.models.api.repo
+
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 

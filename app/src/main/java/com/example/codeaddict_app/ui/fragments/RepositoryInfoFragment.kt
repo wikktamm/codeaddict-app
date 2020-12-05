@@ -2,14 +2,18 @@ package com.example.codeaddict_app.ui.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.codeaddict_app.R
+import com.example.codeaddict_app.adapters.CommitsAdapter
+import com.example.codeaddict_app.data.models.api.commit.Commit
+import com.example.codeaddict_app.data.models.api.commit.CommitResponse
 import com.example.codeaddict_app.data.models.api.repo.Repository
-import com.example.codeaddict_app.data.models.commit.CommitResponse
 import com.example.codeaddict_app.util.Constants.BUNDLE_KEY_CHOSEN_REPO
+import com.example.codeaddict_app.util.empty
 import com.example.codeaddict_app.viewmodels.RepositoriesInfoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_repository_info.*
@@ -19,13 +23,35 @@ class RepositoryInfoFragment : BaseFragment(R.layout.fragment_repository_info) {
 
     private lateinit var chosenRepo: Repository
     private val viewModel: RepositoriesInfoViewModel by viewModels()
+    private lateinit var commitsAdapter: CommitsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getRepositoryFromBundle()
+        setupRecyclerView()
+        setListeners()
         observeOnChanges()
         displayUserInfo()
         getRepositoryInfo()
+    }
+
+    private fun setListeners() {
+        tv_back.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun setupRecyclerView(commits: List<Commit> = emptyList()) {
+        commitsAdapter = CommitsAdapter(commits)
+        with(rv_commits) {
+            adapter = commitsAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        tv_no_commits.text = String.empty()
     }
 
     private fun displayUserInfo() {
@@ -44,15 +70,19 @@ class RepositoryInfoFragment : BaseFragment(R.layout.fragment_repository_info) {
     private fun observeOnChanges() {
         with(viewModel) {
             repoCommitInfo.observe(viewLifecycleOwner, Observer { repo ->
-                Toast.makeText(requireActivity(), "a", Toast.LENGTH_SHORT).show()
                 synchronizeUiWithData(repo)
             })
         }
     }
 
-    private fun synchronizeUiWithData(repo: CommitResponse) {
-        if (repo.items.isNotEmpty()) {
-//            tv_author.text = repo.items[0].
+    private fun synchronizeUiWithData(commitList: CommitResponse) {
+        if (commitList.size > 0) {
+            commitsAdapter.addItems(commitList.subList(0, 3).map { x -> x.commit })
+            commitsAdapter.notifyDataSetChanged()
+            tv_no_commits.text = String.empty()
+        } else {
+            commitsAdapter.clearItems()
+            tv_no_commits.text = getString(R.string.no_commits)
         }
     }
 

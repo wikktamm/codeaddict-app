@@ -1,7 +1,8 @@
-package com.example.codeaddict_app.data.models.commit
+package com.example.codeaddict_app.data.models.api.commit
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class CommitterX(
     val login: String,
@@ -36,4 +37,4 @@ data class CommitterX(
     val type: String,
     @SerializedName("site_admin")
     val siteAdmin: Boolean
-)
+) : Serializable

@@ -1,6 +1,7 @@
 package com.example.codeaddict_app.data.models.api.repo
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class RepositoriesResponse(
     @SerializedName("total_count")
@@ -9,4 +10,4 @@ data class RepositoriesResponse(
     val incompleteResults: Boolean,
     @SerializedName("items")
     val repositories: List<Repository>
-)
+) : Serializable

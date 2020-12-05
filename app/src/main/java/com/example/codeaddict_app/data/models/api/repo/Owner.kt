@@ -1,5 +1,6 @@
 package com.example.codeaddict_app.data.models.api.repo
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Owner(
     val login: String,
@@ -14,4 +15,4 @@ data class Owner(
     @SerializedName("received_events_url")
     val receivedEventsUrl: String,
     val type: String
-)
+)  : Serializable

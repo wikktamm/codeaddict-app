@@ -1,7 +1,8 @@
 package com.example.codeaddict_app.data.repositories.implementation
 
+import com.example.codeaddict_app.data.ApiHeaderProvider
+import com.example.codeaddict_app.data.models.api.commit.CommitResponse
 import com.example.codeaddict_app.data.models.api.repo.RepositoriesResponse
-import com.example.codeaddict_app.data.models.commit.CommitResponse
 import com.example.codeaddict_app.data.repositories.interfaces.RepositoriesRepository
 import com.example.codeaddict_app.data.services.GitRepositoriesService
 import kotlinx.coroutines.Dispatchers
@@ -15,15 +16,25 @@ class RepositoriesRepositoryImpl @Inject constructor(private val apiService: Git
 
     override suspend fun getRepositories(query: String): Flow<RepositoriesResponse> {
         return flow {
-            val repos = apiService.getRepositories(query)
-            emit(repos)
+            try {
+                val repos = apiService.getRepositories(query)
+                emit(repos)
+            } catch (e: Exception) {
+            }
         }.flowOn(Dispatchers.IO)
     }
 
-    override suspend fun getCommits(query: String): Flow<CommitResponse> {
+    override suspend fun getCommits(fullname: String): Flow<CommitResponse> {
         return flow {
-            val commitInfo = apiService.getCommits(query)
-            emit(commitInfo)
+            try {
+                val commitInfo =
+                    apiService.getCommits(
+                        headers = ApiHeaderProvider.getAcceptHeaders(),
+                        fullname = fullname
+                    )
+                emit(commitInfo)
+            } catch (e: Exception) {
+            }
         }.flowOn(Dispatchers.IO)
     }
 }

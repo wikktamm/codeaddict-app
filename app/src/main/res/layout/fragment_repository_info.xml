@@ -136,20 +136,22 @@
             android:textSize="17sp"
             android:theme="@style/RoundedShape"
             app:iconGravity="textStart"
+            android:layout_marginBottom="44dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_commits" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_commits"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="@dimen/main_margin"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="@dimen/main_margin"
+            android:layout_marginBottom="24dp"
             android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView9">
@@ -167,6 +169,15 @@
             android:theme="@style/Title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_repo_title" />
+
+        <TextView
+            android:id="@+id/tv_no_commits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_commits"
+            app:layout_constraintEnd_toEndOf="@+id/rv_commits"
+            app:layout_constraintStart_toStartOf="@+id/rv_commits"
+            app:layout_constraintTop_toTopOf="@+id/rv_commits" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
