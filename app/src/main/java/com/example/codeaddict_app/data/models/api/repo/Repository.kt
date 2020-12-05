@@ -1,6 +1,6 @@
 package com.example.codeaddict_app.data.models.api.repo
-import com.example.codeaddict_app.data.models.api.repo.Owner
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Repository(
     val id: Int,
@@ -38,4 +38,4 @@ data class Repository(
     @SerializedName("default_branch")
     val defaultBranch: String,
     val score: Double
-)
+) : Serializable

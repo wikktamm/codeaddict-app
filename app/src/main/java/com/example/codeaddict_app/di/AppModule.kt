@@ -1,6 +1,6 @@
 package com.example.codeaddict_app.di
 
-import com.example.codeaddict_app.data.repositories.implementation.RepositoryRepositoryImpl
+import com.example.codeaddict_app.data.repositories.implementation.RepositoriesRepositoryImpl
 import com.example.codeaddict_app.data.repositories.interfaces.RepositoriesRepository
 import com.example.codeaddict_app.data.services.GitRepositoriesService
 import com.example.codeaddict_app.util.Constants.BASE_URL
@@ -43,6 +43,6 @@ class AppModule {
     @Provides
     @Singleton
     fun provideRepository(service: GitRepositoriesService): RepositoriesRepository {
-        return RepositoryRepositoryImpl(service)
+        return RepositoriesRepositoryImpl(service)
     }
 }

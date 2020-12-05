@@ -41,6 +41,15 @@ class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewH
             Glide.with(holder.itemView.context).load(repo.owner.avatarUrl).into(iv_author_avatar)
             tv_title.text = repo.name
             tv_stars_count.text = repo.stargazersCount.toString()
+            setOnClickListener {
+                _onRepoClickListener?.invoke(repo)
+            }
         }
+    }
+
+
+    private var _onRepoClickListener: ((Repository) -> Unit)? = null
+    fun setOnRepoClickListener(func: ((Repository) -> Unit)) {
+        _onRepoClickListener = func
     }
 }
