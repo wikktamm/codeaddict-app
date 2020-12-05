@@ -1,5 +1,7 @@
 package com.example.codeaddict_app.ui.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -39,6 +41,30 @@ class RepositoryInfoFragment : BaseFragment(R.layout.fragment_repository_info) {
         tv_back.setOnClickListener {
             findNavController().popBackStack()
         }
+        bt_view_online.setOnClickListener {
+            openRepoInBrowser()
+        }
+        bt_share_repo.setOnClickListener {
+            shareRepoInfo()
+        }
+    }
+
+    private fun openRepoInBrowser() {
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(chosenRepo.htmlUrl)
+        startActivity(intent)
+    }
+
+    private fun shareRepoInfo() {
+        val info = "${chosenRepo.name} ${chosenRepo.htmlUrl}"
+        val sendIntent = Intent()
+        sendIntent.action = Intent.ACTION_SEND
+        sendIntent.putExtra(
+            Intent.EXTRA_TEXT,
+            info
+        )
+        sendIntent.type = "text/plain"
+        startActivity(sendIntent)
     }
 
     private fun setupRecyclerView(commits: List<Commit> = emptyList()) {
