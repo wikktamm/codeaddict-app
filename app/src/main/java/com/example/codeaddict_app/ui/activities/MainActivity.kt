@@ -8,8 +8,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import com.example.codeaddict_app.R
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfig: AppBarConfiguration
     lateinit var navigationController: NavController
