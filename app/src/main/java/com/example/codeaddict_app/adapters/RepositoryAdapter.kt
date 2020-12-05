@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.codeaddict_app.R
-import com.example.codeaddict_app.data.models.api.Repository
+import com.example.codeaddict_app.data.models.api.repo.Repository
 import kotlinx.android.synthetic.main.item_repository.view.*
 
 class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.RepositoryViewHolder>() {

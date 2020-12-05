@@ -1,6 +1,6 @@
 package com.example.codeaddict_app.data.repositories.implementation
 
-import com.example.codeaddict_app.data.models.api.RepositoriesResponse
+import com.example.codeaddict_app.data.models.api.repo.RepositoriesResponse
 import com.example.codeaddict_app.data.repositories.interfaces.RepositoriesRepository
 import com.example.codeaddict_app.data.services.GitRepositoriesService
 import kotlinx.coroutines.Dispatchers

@@ -1,12 +1,12 @@
-package com.example.codeaddict_app.data.models.api
+package com.example.codeaddict_app.data.models.commit
+
 
 import com.google.gson.annotations.SerializedName
 
-data class RepositoriesResponse(
+data class CommitResponse(
     @SerializedName("total_count")
     val totalCount: Int,
     @SerializedName("incomplete_results")
     val incompleteResults: Boolean,
-    @SerializedName("items")
-    val repositories: List<Repository>
+    val items: List<Item>
 )

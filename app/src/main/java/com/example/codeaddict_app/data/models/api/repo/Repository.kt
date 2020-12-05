@@ -1,4 +1,5 @@
-package com.example.codeaddict_app.data.models.api
+package com.example.codeaddict_app.data.models.api.repo
+import com.example.codeaddict_app.data.models.api.repo.Owner
 import com.google.gson.annotations.SerializedName
 
 data class Repository(
