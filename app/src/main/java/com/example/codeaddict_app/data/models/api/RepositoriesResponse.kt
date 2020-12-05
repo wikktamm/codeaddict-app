@@ -1,5 +1,5 @@
 package com.example.codeaddict_app.data.models.api
-import com.example.codeaddict_app.data.models.api.Repository
+
 import com.google.gson.annotations.SerializedName
 
 data class RepositoriesResponse(

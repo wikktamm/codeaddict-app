@@ -1,5 +1,8 @@
 package com.example.codeaddict_app.data.repositories.interfaces
 
+import com.example.codeaddict_app.data.models.api.RepositoriesResponse
+import kotlinx.coroutines.flow.Flow
+
 interface RepositoriesRepository {
-    fun getResults(query: String)
+    suspend fun getRepositories(query: String): Flow<RepositoriesResponse>
 }
